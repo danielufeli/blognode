@@ -52,17 +52,17 @@ definitions:
   signUp:
     type: object
     required:
-      - firstName
-      - lastName
+      - firstname
+      - lastname
       - address
       - mobileno
       - email
       - password
     properties:
-      firstName:
+      firstname:
         type: string
         example: James
-      lastName:
+      lastname:
         type: string
         example: Adeyemo
       mobileno:

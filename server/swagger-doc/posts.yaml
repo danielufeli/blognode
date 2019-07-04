@@ -3,7 +3,7 @@ path:
     post:
       tags:
         - post
-      summary: User can perform crud operations on system
+      summary: User can create a post article
       description: Allow user to create a post
       security:
         - bearerAuth: []
@@ -12,9 +12,9 @@ path:
       parameters:
         - in: body
           name: post
-          description: new post application to be created
+          description: new post to be created
           schema:
-            $ref: '#/definitions/post'
+            $ref: "#/definitions/post"
       responses:
         201:
           description: Post created successfully
@@ -43,7 +43,7 @@ path:
   /api/v1/posts/{id}:
     get:
       tags:
-        - Post
+        - post
       summary: Gets a Single Post Article
       description: User can view a Single Post Article
       security:
@@ -65,7 +65,7 @@ path:
           description: Internal server error
     delete:
       tags:
-        - admin
+        - post
       summary: Allows admin to delete a post
       description: Admin can delete a post
       security:
@@ -73,19 +73,41 @@ path:
       produces:
         - application/json
       parameters:
-        - in: body
-          name: User can Delete a Post Article
-          description: Delete a Post Article
-          schema:
-            $ref: '#/definitions/{id}'
         - in: path
           name: id
-          description: Loan Id
+          description: Post Id
           type: integer
           required: true
       responses:
         200:
-          description: Successfully approves/rejects a loan
+          description: Successfully deletes a post article
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+    put:
+      tags:
+        - post
+      summary: Allows user to update a post
+      description: user can update a post
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: post
+          description: update post article
+          schema:
+            $ref: "#/definitions/post"
+        - in: path
+          name: id
+          description: Post Id
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully deletes a post article
         401:
           description: Denies access to the resource if its not the Admin
         500:
@@ -102,16 +124,16 @@ definitions:
     properties:
       title:
         type: string
-        example: 'All about tech in CI'
+        example: "All about tech in CI"
       descriptions:
         type: string
-        example: 'The World at Large is Tech'
+        example: "The World at Large is Tech"
       category:
         type: string
-        example: 'Technology'
+        example: "Technology"
       tag:
         tag: string
-        example: 'tech'
+        example: "tech"
       images:
         type: string
-        example: '/img.jpg'
+        example: "/img.jpg"
