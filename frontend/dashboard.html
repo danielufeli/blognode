@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blogger">
+  <meta name="keywords" content="Blogger>
+  <meta name="author" content="Daniel Ufeli">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="content">
+    <header>
+        <div class="container">
+          <div id="branding">
+            <h1><a href="index.html" id="htext"> Bloging System </a></h1>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="news.html">All News</a></li>
+                  <li><a href="index.html" id="logBtn">Logout</a></li>
+                </ul>
+          </nav>
+        </div>
+      </header>
+
+  <sectionc style="text-align: center">
+    <div class="container">
+        <div id="adminform">
+            <h1>Post a News Article</h1>
+            <p id="errorlog" class="warning"></p><br>
+        <form>
+            <p><input type="text" id="title"  name="title" placeholder="Title"></p>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+            <p><input type="text" id="category" name="category" placeholder="Category"></p>
+            <p><input type="text" id="tag" name="tag" placeholder="TAG"></p>
+            <p><input type="file" name="images" id="images"></p>
+           <p><input type="submit" value="Post Article" class="button_1" id="createPostBtn"></p>
+           <br> 
+          </form>
+        </div>
+      <ul>
+        <p id="errorlog" class="warning"></p><br>
+        <div id="posts"></div>
+      </ul>
+    </div>
+  </section>
+  </div> 
+  <footer class="footer">
+      <p>Bloging System, Copyright &copy. 2019</p>
+    </footer> 
+</body>
+<script src="assets/js/createpost.js"></script>
+<script src="assets/js/dashpost.js"></script>
+<script src="assets/js/logout.js"></script>
+<script src="assets/js/moment.min.js"></script>
+</html>
