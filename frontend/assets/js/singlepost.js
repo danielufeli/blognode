@@ -35,7 +35,7 @@ const deleteData = () => {
 };
 
 const getpost = () => {
-  const url = https://blogsystemci.herokuapp.com/api/v1/posts/${postId}`;
+  const url = `https://blogsystemci.herokuapp.com/api/v1/posts/${postId}`;
 
   let userToken = '';
   if (localStorage.getItem('token')) {
