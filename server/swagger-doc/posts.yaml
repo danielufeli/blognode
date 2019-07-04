@@ -1,0 +1,117 @@
+path:
+  /api/v1/posts:
+    post:
+      tags:
+        - post
+      summary: User can perform crud operations on system
+      description: Allow user to create a post
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: post
+          description: new post application to be created
+          schema:
+            $ref: '#/definitions/post'
+      responses:
+        201:
+          description: Post created successfully
+        400:
+          description: Bad request
+        403:
+          description: Invalid token or missing token
+        500:
+          description: Internal server error
+    get:
+      tags:
+        - post
+      summary: Gets all post from database
+      description: User can view all post articles
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successfully get posts
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+  /api/v1/posts/{id}:
+    get:
+      tags:
+        - Post
+      summary: Gets a Single Post Article
+      description: User can view a Single Post Article
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: Post ID
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully get a specific Article
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+    delete:
+      tags:
+        - admin
+      summary: Allows admin to delete a post
+      description: Admin can delete a post
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: User can Delete a Post Article
+          description: Delete a Post Article
+          schema:
+            $ref: '#/definitions/{id}'
+        - in: path
+          name: id
+          description: Loan Id
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully approves/rejects a loan
+        401:
+          description: Denies access to the resource if its not the Admin
+        500:
+          description: Internal server error
+definitions:
+  post:
+    type: object
+    required:
+      - title
+      - description
+      - category
+      - tag
+      - images
+    properties:
+      title:
+        type: string
+        example: 'All about tech in CI'
+      descriptions:
+        type: string
+        example: 'The World at Large is Tech'
+      category:
+        type: string
+        example: 'Technology'
+      tag:
+        tag: string
+        example: 'tech'
+      images:
+        type: string
+        example: '/img.jpg'

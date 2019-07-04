@@ -1,0 +1,91 @@
+path:
+  /api/v1/auth/signup:
+    post:
+      tags:
+        - users
+      summary: Creates a new user
+      description: |
+        Allow you to sign up for a user account on Blogger
+      produces:
+          - application/json
+      parameters:
+        - in: body
+          name: user
+          description: user to be created
+          schema:
+            $ref: '#/definitions/signUp'
+      responses:
+        201:
+          description: User created
+        400:
+          description: Bad request  
+        401:
+          description: User with email already exists
+        500:
+          description: Internal server error
+  /api/v1/auth/signin:
+    post:
+      tags:
+        - users
+      summary: Signs in a new user
+      description: A user can sign in to Blogger
+      consumes:
+          - application/json
+      produces:
+          - application/json   
+      parameters:
+        - in: body
+          name: sign in
+          description: user sign in
+          schema:
+            $ref: '#/definitions/signIn'
+      responses:
+        200:
+          description: User signed in
+        400: 
+          description: Bad request  
+        401:
+          description: Incorrect credentials
+        500:
+          description: Internal server error
+definitions:
+  signUp:
+    type: object
+    required:
+      - firstName
+      - lastName
+      - address
+      - mobileno
+      - email
+      - password
+    properties:
+      firstName:
+        type: string
+        example: James
+      lastName:
+        type: string
+        example: Adeyemo
+      mobileno:
+        type: string
+        example: 08082205956
+      address:
+        type: string
+        example: 2, Opebi Road Ikeja  
+      email:
+        type: string
+        example: adeyemo@outlook.com
+      password: 
+        type: string
+        example: Domi@2019
+  signIn:
+    type: object
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: user@blogger.com
+      password: 
+        type: string
+        example: Domi@2019
